@@ -25,17 +25,16 @@ var commands = {
 		done(inputArr.slice(1).join(' ').trim() + '\n');
 	},
 	cat: function(filename, done, lines){
-
 		fs.readFile(filename, "utf-8", function(err, data){
 			if (err) throw err;
 			if (lines){
 				if (lines > 0) {
-					data = data.split('\n').slice(0,lines).join('\n') + '\n';
+					data = data.split('\n').slice(0,lines).join('\n');
 				} else if (lines <= 0){
-					data = data.split('\n').slice(lines).join('\n') + '\n';
+					data = data.split('\n').slice(lines).join('\n');
 				}	
 			}
-			done(data);
+			done(data + '\n');
 		});
 	},
 	head: function(filename, done){
